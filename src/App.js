@@ -1,173 +1,138 @@
-import './App.css';
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import './App.css';
 
-function AuthorProfile() {
+function Sidebar({ collapsed, onToggle }) {
   return (
-    <div className="profile-card">
-      <div className="circle"></div>
-      <h2>Author Name</h2>
-      <p>Lorem Ipsum Dolor</p>
+    <nav className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
+      <button className="toggle-btn" onClick={onToggle}>
+        {collapsed ? '→' : '←'}
+      </button>
+      <ul className="menu">
+        <li>
+          <Link to="/">
+            <span className="icon">🏠</span>
+            {!collapsed && <span className="label">Home</span>}
+          </Link>
+        </li>
+        <li>
+          <Link to="/services">
+            <span className="icon">🦷</span>
+            {!collapsed && <span className="label">Services</span>}
+          </Link>
+        </li>
+        <li>
+          <Link to="/doctors">
+            <span className="icon">👩‍⚕️</span>
+            {!collapsed && <span className="label">Doctors</span>}
+          </Link>
+        </li>
+      </ul>
+    </nav>
+  );
+}
+
+function Home() {
+  return (
+    <div className="page">
+      <h1>Welcome to SmileCare Dental</h1>
+      <p>
+        At SmileCare, we make booking your dentist visit easy. Use the sidebar
+        to see our services or find a doctor.
+      </p>
     </div>
   );
 }
 
-function ReactionsBar() {
-  const reactions = [
-    { label: 'Like', percent: '20%' },
-    { label: 'Love', percent: '60%' },
-    { label: 'Angry', percent: '5%' },
-    { label: 'Sad', percent: '5%' },
+function Services() {
+  const services = [
+    { id: 1, title: 'Teeth Cleaning', desc: 'Gentle cleaning for healthy teeth.' },
+    { id: 2, title: 'Braces', desc: 'Straighten your teeth with braces.' },
+    { id: 3, title: 'Whitening', desc: 'Brighten your smile in one visit.' },
+    { id: 4, title: 'Root Canal', desc: 'Pain relief and tooth preservation.' },
   ];
-  const [active, setActive] = useState(null);
 
   return (
-    <div className="reactions-bar">
-      {reactions.map((r, idx) => (
-        <div
-          key={r.label}
-          className={`reaction${active === idx ? ' active' : ''}`}
-          onClick={() => setActive(idx)}
-        >
-          <div className="reaction-label">{r.label}</div>
-          <div className="reaction-percent">{r.percent}</div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-const commentsData = [
-  [
-    {
-      author: "Author Name",
-      date: "10 February 2025",
-      text: "Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor",
-    },
-    {
-      author: "Author Name",
-      date: "10 February 2025",
-      text: "Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor",
-    },
-  ],
-  [
-    {
-      author: "Author Name",
-      date: "11 February 2025",
-      text: "Second page comment. Lorem Ipsum Dolor Lorem Ipsum Dolor.",
-    },
-    {
-      author: "Author Name",
-      date: "11 February 2025",
-      text: "Second page comment. Lorem Ipsum Dolor Lorem Ipsum Dolor.",
-    },
-  ],
-  [
-    {
-      author: "Author Name",
-      date: "12 February 2025",
-      text: "Third page comment. Lorem Ipsum Dolor.",
-    },
-    {
-      author: "Author Name",
-      date: "12 February 2025",
-      text: "Third page comment. Lorem Ipsum Dolor.",
-    },
-  ],
-];
-
-function Comment({ author, date, text }) {
-  const [reaction, setReaction] = useState(null);
-
-  return (
-    <div className="comment-row">
-      <div className="circle"></div>
-      <div className="comment-content">
-        <div className="comment-header">
-          <Link to="/author" className="author-name">{author}</Link>, <span className="comment-date">{date}</span>
-          <span className="report-link">Report</span>
-        </div>
-        <div className="comment-text">{text}</div>
-        <div className="comment-actions">
-          <span
-            className={`comment-reaction${reaction === 'like' ? ' active' : ''}`}
-            onClick={() => setReaction(reaction === 'like' ? null : 'like')}
-          >
-            Like 12
-          </span>
-          <span
-            className={`comment-reaction${reaction === 'dislike' ? ' active' : ''}`}
-            onClick={() => setReaction(reaction === 'dislike' ? null : 'dislike')}
-          >
-            Dislike 1
-          </span>
-          <span className="reply-link">Reply</span>
-        </div>
+    <div className="page">
+      <h1>Our Services</h1>
+      <div className="services-grid">
+        {services.map((s) => (
+          <div key={s.id} className="service-card">
+            <h2>{s.title}</h2>
+            <p>{s.desc}</p>
+            <button>Book Now</button>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-function CommentsSection() {
+function Doctors() {
+  const allDoctors = [
+    { id: 1, name: 'Dr. Amina Rahman', email: 'amina@smilecare.bd', img: 'https://via.placeholder.com/80' },
+    { id: 2, name: 'Dr. Karim Hossain', email: 'karim@smilecare.bd', img: 'https://via.placeholder.com/80' },
+    { id: 3, name: 'Dr. Laila Siddiqua', email: 'laila@smilecare.bd', img: 'https://via.placeholder.com/80' },
+    { id: 4, name: 'Dr. Rashid Khan', email: 'rashid@smilecare.bd', img: 'https://via.placeholder.com/80' },
+    { id: 5, name: 'Dr. Nipa Chowdhury', email: 'nipa@smilecare.bd', img: 'https://via.placeholder.com/80' },
+    { id: 6, name: 'Dr. Sohail Ahmed', email: 'sohail@smilecare.bd', img: 'https://via.placeholder.com/80' },
+  ];
+
   const [page, setPage] = useState(0);
+  const pageSize = 3;
+  const pageCount = Math.ceil(allDoctors.length / pageSize);
+  const start = page * pageSize;
+  const visible = allDoctors.slice(start, start + pageSize);
 
   return (
-    <div className="comments-box">
-      <div className="comments-title">20 Comments</div>
-      <hr className="divider" />
-      <input className="comment-input" placeholder="Write your comment.." />
-      {commentsData[page].map((c, i) => (
-        <Comment key={i} {...c} />
-      ))}
+    <div className="page">
+      <h1>Our Doctors</h1>
+      <ul className="doctor-list">
+        {visible.map((doc) => (
+          <li key={doc.id} className="doctor-card">
+            <img src={doc.img} alt={doc.name} />
+            <div>
+              <h2>{doc.name}</h2>
+              <p>{doc.email}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
       <div className="pagination">
-        {[0, 1, 2].map(num => (
+        {Array.from({ length: pageCount }, (_, i) => (
           <button
-            key={num}
-            className={`page-btn${page === num ? ' active' : ''}`}
-            onClick={() => setPage(num)}
+            key={i}
+            className={page === i ? 'active' : ''}
+            onClick={() => setPage(i)}
           >
-            {num + 1}
+            {i + 1}
           </button>
         ))}
       </div>
     </div>
   );
 }
-function Home() {
-  return (
-    <div className="App">
-      <h1 className='Subsection'>Section {">"} subsection</h1>
-      <h2 className='SecondLine'>Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor</h2>
-      <p className='para1'>Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum DolorLorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor</p>
-      <div className='rectangle'></div>
-      <p className='para2'>Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum Dolor Lorem Ipsum</p>
-      <div className="author-row">
-       <div className='circle'></div>
-        <div className="author-info">
-          <Link to="/author" className="author-name">Author Name</Link>
-          <div className="author-date">7 January 2025</div>
-        </div>
-       </div>
-       <hr className="divider" />
-       <p className='para3'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet animi facere inventore officia perspiciatis molestias esse ducimus. Illum eveniet provident odit, iusto, quidem harum placeat veniam voluptate, pariatur ad inventore? Recusandae ipsum reprehenderit cupiditate. At, ratione aspernatur eum repellendus totam eligendi quos dolor vel sint. Exercitationem quidem vel iure eius Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur corrupti corporis ipsam ea ratione sequi officiis, libero voluptatibus magni error inventore maxime in. Numquam illo reprehenderit repellendus repellat rerum, excepturi iure consectetur minima cumque eaque odit fuga magni ullam, explicabo tempore? Alias nulla cumque ab, repudiandae quis exercitationem facilis, sint consequuntur nesciunt in iure maxime dignissimos vero unde! Sint adipisci dignissimos ullam culpa, illo dolores rem mollitia quidem inventore iure accusantium quisquam unde consequuntur fugit, rerum earum quo ea necessitatibus tenetur error sunt nisi! Repudiandae distinctio omnis praesentium laborum, corporis cupiditate nihil odit vel, debitis corrupti, facere consectetur! Dolore, magni.</p>
-       <hr className="divider" />
-        <ReactionsBar />
-        <CommentsSection />
-    </div>
-  );
-}
-
 
 function App() {
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/author" element={<AuthorProfile />} />
-      </Routes>
+      <div className="app-container">
+        <Sidebar
+          collapsed={sidebarCollapsed}
+          onToggle={() => setSidebarCollapsed((c) => !c)}
+        />
+        <main className={sidebarCollapsed ? 'main collapsed' : 'main'}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/doctors" element={<Doctors />} />
+          </Routes>
+        </main>
+      </div>
     </Router>
   );
 }
-
 
 export default App;
