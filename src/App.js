@@ -70,7 +70,7 @@ function Services() {
 
 function Doctors() {
   const allDoctors = [
-    { id: 1, name: 'Dr. Amina Rahman', email: 'amina@smilecare.bd', img: 'https://via.placeholder.com/80' },
+    { id: 1, name: 'Dr. Jannatul Ferdous Priya', email: 'amina@smilecare.bd', img: 'https://via.placeholder.com/80' },
     { id: 2, name: 'Dr. Karim Hossain', email: 'karim@smilecare.bd', img: 'https://via.placeholder.com/80' },
     { id: 3, name: 'Dr. Laila Siddiqua', email: 'laila@smilecare.bd', img: 'https://via.placeholder.com/80' },
     { id: 4, name: 'Dr. Rashid Khan', email: 'rashid@smilecare.bd', img: 'https://via.placeholder.com/80' },
