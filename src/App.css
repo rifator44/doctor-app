@@ -12,13 +12,12 @@
 .app-container {
   display: flex;
   min-height: 100vh;
-  background-color: #f0f4f8; /* Light background for the whole app */
-}
+  background-color: #f0f4f8;
 
-/* Sidebar Styling */
+}
 .sidebar {
   width: 220px;
-  background-color: #3f51b5; /* Primary blue for sidebar */
+  background-color: #3f51b5; /* sidebar */
   color: white;
   padding: 20px 0;
   box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
@@ -66,21 +65,21 @@
   text-decoration: none;
   font-size: 1.1rem;
   transition: background-color 0.2s ease, color 0.2s ease;
-  border-radius: 0 50px 50px 0; /* Rounded right side */
+  border-radius: 0 50px 50px 0; 
 }
 
 .sidebar.collapsed .menu a {
   justify-content: center;
   padding: 12px 0;
-  border-radius: 50%; /* Make icons circular when collapsed */
+  border-radius: 50%; 
   width: 50px;
   height: 50px;
-  margin: 0 auto; /* Center the icons */
+  margin: 0 auto; 
 }
 
 
 .menu a:hover {
-  background-color: #5c6bc0; /* Lighter blue on hover */
+  background-color: #5c6bc0; 
   color: #e8eaf6;
 }
 
@@ -98,14 +97,14 @@
   flex-grow: 1;
   padding: 20px 40px;
   transition: margin-left 0.3s ease-in-out;
-  background-color: #eef2f7; /* Very light background for content */
+  background-color: #eef2f7; 
   border-radius: 10px;
   margin: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .main.collapsed {
-  margin-left: 100px; /* Adjust if needed based on sidebar width */
+  margin-left: 100px; 
 }
 
 .page {
@@ -115,7 +114,7 @@
 }
 
 .page h1 {
-  color: #3f51b5; /* Primary blue for headings */
+  color: #3f51b5; 
   margin-bottom: 25px;
   text-align: center;
   font-size: 2.5rem;
@@ -128,7 +127,7 @@
   text-align: center;
 }
 
-/* Services Page Styling */
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -151,7 +150,7 @@
 }
 
 .service-card h2 {
-  color: #00796b; /* Teal for service titles */
+  color: #00796b; 
   margin-bottom: 15px;
   font-size: 1.8rem;
 }
@@ -179,7 +178,6 @@
   transform: translateY(-2px);
 }
 
-/* Doctors Page Styling */
 .doctor-list {
   list-style: none;
   padding: 0;
@@ -208,7 +206,7 @@
   border-radius: 50%;
   margin-right: 20px;
   object-fit: cover;
-  border: 3px solid #fbc02d; /* Accent color for avatar border */
+  border: 3px solid #fbc02d; 
 }
 
 .doctor-card h2 {
@@ -223,7 +221,7 @@
   font-size: 0.95rem;
 }
 
-/* Pagination Styling */
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -254,7 +252,7 @@
   font-weight: bold;
 }
 
-/* Existing styles from your original App.css - merged and adjusted */
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -282,7 +280,7 @@
   font-weight: 200;
   text-decoration : underline;
   text-align: left;
-  color: #3f51b5; /* Applying primary color */
+  color: #3f51b5; 
 }
 
 .SecondLine{
@@ -290,7 +288,7 @@
   margin-top: 10px;
   font-weight: 800;
   text-align: left;
-  color: #00796b; /* Applying teal color */
+  color: #00796b; 
 }
 
 .para1{
@@ -305,7 +303,7 @@
   width: 100%;
   height: 250px;
   min-height: 250px;
-  background: #580e0e; /* Original color, consider updating if not used */
+  background: #580e0e; 
   margin-top: 10px;
   display: flex;
   align-items: center;
@@ -325,7 +323,7 @@
   width: 40px;
   height: 40px;
   margin-top: 10px;
-  background: #1a3180; /* Original color, consider updating if not used */
+  background: #1a3180; 
   border-radius: 50%;
   display: inline-block;
 }
@@ -346,7 +344,7 @@
   margin-top: 10px;
   margin-left: 5px;
   font-weight: 500;
-  color: #3f51b5; /* Updated to primary blue */
+  color: #3f51b5; 
   text-decoration: none;
   margin-bottom: 2px;
 }
@@ -357,7 +355,7 @@
 
 .author-date {
   font-size: 0.85rem;
-  color: #777; /* Softer date color */
+  color: #777; 
 }
 
 .profile-card {
@@ -371,7 +369,7 @@
 
 .divider {
   border: none;
-  border-top: 2px solid #ccd6e0; /* Softer divider */
+  border-top: 2px solid #ccd6e0; 
   width: 100%;
   margin: 20px 0;
 }
@@ -384,16 +382,16 @@
   color: #4a4a4a;
 }
 
-/* Reactions Bar - Kept original colors but made them fit better */
+
 .reactions-bar {
-  background: #98c6fa; /* Original light blue */
+  background: #98c6fa; 
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  margin: 20px 0; /* Adjusted margin */
-  width: 100%; /* Take full width */
+  margin: 20px 0; 
+  width: 100%; 
   box-sizing: border-box;
 }
 
@@ -424,11 +422,11 @@
 
 
 .comments-box {
-  background: #98c6fa; /* Original light blue */
+  background: #98c6fa; 
   border-radius: 12px;
   padding: 32px 24px;
-  width: 100%; /* Take full width */
-  margin: 20px 0; /* Adjusted margin */
+  width: 100%; 
+  margin: 20px 0; 
   box-sizing: border-box;
 }
 
