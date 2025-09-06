@@ -1,5 +1,13 @@
+// src/App.js
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useNavigate
+} from 'react-router-dom';
+import Booking from './booking';
 import './App.css';
 
 function Sidebar({ collapsed, onToggle }) {
@@ -40,27 +48,35 @@ function Home() {
         At SmileCare, we make booking your dentist visit easy. Use the sidebar
         to see our services or find a doctor.
       </p>
+      <img
+        src="https://lirp.cdn-website.com/df4349b6/dms3rep/multi/opt/teeth-cleaning-process-1920w.jpg"
+        alt="Dentist performing teeth cleaning"
+        className="home-page-image"
+      />
     </div>
   );
 }
 
 function Services() {
+  const navigate = useNavigate();
   const services = [
     { id: 1, title: 'Teeth Cleaning', desc: 'Gentle cleaning for healthy teeth.' },
     { id: 2, title: 'Braces', desc: 'Straighten your teeth with braces.' },
     { id: 3, title: 'Whitening', desc: 'Brighten your smile in one visit.' },
-    { id: 4, title: 'Root Canal', desc: 'Pain relief and tooth preservation.' },
+    { id: 4, title: 'Root Canal', desc: 'Pain relief and tooth preservation.' }
   ];
 
   return (
     <div className="page">
       <h1>Our Services</h1>
       <div className="services-grid">
-        {services.map((s) => (
+        {services.map(s => (
           <div key={s.id} className="service-card">
             <h2>{s.title}</h2>
             <p>{s.desc}</p>
-            <button>Book Now</button>
+            <button onClick={() => navigate(`/services/book/${s.id}`)}>
+              Book Now
+            </button>
           </div>
         ))}
       </div>
@@ -75,7 +91,7 @@ function Doctors() {
     { id: 3, name: 'Dr. Laila Siddiqua', email: 'laila@smilecare.bd', img: 'https://via.placeholder.com/80' },
     { id: 4, name: 'Dr. Rashid Khan', email: 'rashid@smilecare.bd', img: 'https://via.placeholder.com/80' },
     { id: 5, name: 'Dr. Nipa Chowdhury', email: 'nipa@smilecare.bd', img: 'https://via.placeholder.com/80' },
-    { id: 6, name: 'Dr. Sohail Ahmed', email: 'sohail@smilecare.bd', img: 'https://via.placeholder.com/80' },
+    { id: 6, name: 'Dr. Sohail Ahmed', email: 'sohail@smilecare.bd', img: 'https://via.placeholder.com/80' }
   ];
 
   const [page, setPage] = useState(0);
@@ -88,7 +104,7 @@ function Doctors() {
     <div className="page">
       <h1>Our Doctors</h1>
       <ul className="doctor-list">
-        {visible.map((doc) => (
+        {visible.map(doc => (
           <li key={doc.id} className="doctor-card">
             <img src={doc.img} alt={doc.name} />
             <div>
@@ -121,12 +137,13 @@ function App() {
       <div className="app-container">
         <Sidebar
           collapsed={sidebarCollapsed}
-          onToggle={() => setSidebarCollapsed((c) => !c)}
+          onToggle={() => setSidebarCollapsed(c => !c)}
         />
         <main className={sidebarCollapsed ? 'main collapsed' : 'main'}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/book/:serviceId" element={<Booking />} />
             <Route path="/doctors" element={<Doctors />} />
           </Routes>
         </main>

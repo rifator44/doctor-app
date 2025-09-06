@@ -1,3 +1,4 @@
+/* General App Styling */
 .App {
   text-align: center;
   display: flex;
@@ -8,7 +9,252 @@
   padding: 20px;
 }
 
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f0f4f8; /* Light background for the whole app */
+}
 
+/* Sidebar Styling */
+.sidebar {
+  width: 220px;
+  background-color: #3f51b5; /* Primary blue for sidebar */
+  color: white;
+  padding: 20px 0;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.toggle-btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.menu li {
+  margin-bottom: 15px;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border-radius: 0 50px 50px 0; /* Rounded right side */
+}
+
+.sidebar.collapsed .menu a {
+  justify-content: center;
+  padding: 12px 0;
+  border-radius: 50%; /* Make icons circular when collapsed */
+  width: 50px;
+  height: 50px;
+  margin: 0 auto; /* Center the icons */
+}
+
+
+.menu a:hover {
+  background-color: #5c6bc0; /* Lighter blue on hover */
+  color: #e8eaf6;
+}
+
+.menu .icon {
+  margin-right: 15px;
+  font-size: 1.5rem;
+}
+
+.sidebar.collapsed .menu .icon {
+  margin-right: 0;
+}
+
+/* Main Content Area */
+.main {
+  flex-grow: 1;
+  padding: 20px 40px;
+  transition: margin-left 0.3s ease-in-out;
+  background-color: #eef2f7; /* Very light background for content */
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.main.collapsed {
+  margin-left: 100px; /* Adjust if needed based on sidebar width */
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.page h1 {
+  color: #3f51b5; /* Primary blue for headings */
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.page p {
+  color: #4a4a4a;
+  line-height: 1.7;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Services Page Styling */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.service-card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service-card h2 {
+  color: #00796b; /* Teal for service titles */
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.service-card p {
+  color: #666;
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+.service-card button {
+  background-color: #00796b;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.service-card button:hover {
+  background-color: #004d40;
+  transform: translateY(-2px);
+}
+
+/* Doctors Page Styling */
+.doctor-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 40px;
+}
+
+.doctor-card {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.doctor-card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+.doctor-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+  object-fit: cover;
+  border: 3px solid #fbc02d; /* Accent color for avatar border */
+}
+
+.doctor-card h2 {
+  color: #3f51b5;
+  margin: 0 0 5px 0;
+  font-size: 1.5rem;
+}
+
+.doctor-card p {
+  color: #777;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Pagination Styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.pagination button {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #3f51b5;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.pagination button:hover:not(.active) {
+  background-color: #e8eaf6;
+  border-color: #3f51b5;
+}
+
+.pagination button.active {
+  background-color: #3f51b5;
+  color: white;
+  border-color: #3f51b5;
+  font-weight: bold;
+}
+
+/* Existing styles from your original App.css - merged and adjusted */
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -36,6 +282,7 @@
   font-weight: 200;
   text-decoration : underline;
   text-align: left;
+  color: #3f51b5; /* Applying primary color */
 }
 
 .SecondLine{
@@ -43,6 +290,7 @@
   margin-top: 10px;
   font-weight: 800;
   text-align: left;
+  color: #00796b; /* Applying teal color */
 }
 
 .para1{
@@ -50,31 +298,34 @@
   margin-top: 20px;
   font-weight: 400;
   text-align: left;
+  color: #4a4a4a;
 }
 
 .rectangle {
   width: 100%;
   height: 250px;
   min-height: 250px;
-  background: #580e0e;
+  background: #580e0e; /* Original color, consider updating if not used */
   margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
+  overflow: hidden; /* To contain images nicely if added */
 }
 
-.para2
-{
+.para2 {
   font-size: 1.1rem;
   font-weight: 400;
   text-align: left;
+  color: #4a4a4a;
 }
 
 .circle {
   width: 40px;
   height: 40px;
   margin-top: 10px;
-  background: #1a3180; 
+  background: #1a3180; /* Original color, consider updating if not used */
   border-radius: 50%;
   display: inline-block;
 }
@@ -95,7 +346,7 @@
   margin-top: 10px;
   margin-left: 5px;
   font-weight: 500;
-  color: #1a3180;
+  color: #3f51b5; /* Updated to primary blue */
   text-decoration: none;
   margin-bottom: 2px;
 }
@@ -106,7 +357,7 @@
 
 .author-date {
   font-size: 0.85rem;
-  color: #444;
+  color: #777; /* Softer date color */
 }
 
 .profile-card {
@@ -120,26 +371,30 @@
 
 .divider {
   border: none;
-  border-top: 2px solid #222;
+  border-top: 2px solid #ccd6e0; /* Softer divider */
   width: 100%;
+  margin: 20px 0;
 }
 
-.para3{
+.para3 {
   font-size: 1.1rem;
   margin-top: 20px;
   font-weight: 400;
   text-align: left;
+  color: #4a4a4a;
 }
 
+/* Reactions Bar - Kept original colors but made them fit better */
 .reactions-bar {
-  background: #98c6fa;
+  background: #98c6fa; /* Original light blue */
   border-radius: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  margin: 10px;
-  width: 90%;
+  margin: 20px 0; /* Adjusted margin */
+  width: 100%; /* Take full width */
+  box-sizing: border-box;
 }
 
 .reaction {
@@ -148,14 +403,14 @@
   flex: 1;
   color: #222;
   font-weight: bold;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
   border-radius: 8px;
   padding: 5px;
 }
 
 .reaction.active {
   background: hsl(0, 7%, 82%);
-  color: #1a3180;
+  color: #1a3180; /* Original dark blue */
 }
 
 .reaction-label {
@@ -167,28 +422,32 @@
   font-weight: normal;
 }
 
+
 .comments-box {
-  background: #98c6fa;
+  background: #98c6fa; /* Original light blue */
   border-radius: 12px;
   padding: 32px 24px;
-  width: 91%;
-  margin: 10px;
+  width: 100%; /* Take full width */
+  margin: 20px 0; /* Adjusted margin */
   box-sizing: border-box;
 }
 
 .comments-title {
   text-align: left;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
+  font-size: 1.3rem;
+  color: #1a3180; /* Original dark blue */
 }
 
 .comment-input {
-  width: 90%;
-  padding: 10px 40px 10px 14px;
-  border-radius: 20px;
+  width: calc(100% - 28px); /* Adjusting for padding */
+  padding: 12px 14px;
+  border-radius: 25px;
   border: none;
   margin-bottom: 18px;
   font-size: 1rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .comment-row {
@@ -199,7 +458,7 @@
 
 .comment-content {
   flex: 1;
-  margin-left: 10px;
+  margin-left: 15px; /* Increased margin for better separation */
 }
 
 .comment-header {
@@ -208,17 +467,18 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  color: #333;
 }
 
 .comment-date {
-  color: #444;
+  color: #777; /* Softer date color */
   font-size: 0.85rem;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .report-link {
   margin-left: auto;
-  color: #222;
+  color: #555; /* Softer report link color */
   font-size: 0.85rem;
   cursor: pointer;
   font-weight: 400;
@@ -228,6 +488,7 @@
   text-align: left;
   margin: 4px 0 8px 0;
   font-size: 1rem;
+  color: #4a4a4a;
 }
 
 .comment-actions {
@@ -235,6 +496,7 @@
   gap: 16px;
   font-size: 0.95rem;
   align-items: center;
+  margin-top: 8px;
 }
 
 .comment-reaction {
@@ -243,7 +505,7 @@
   color: #222;
   padding: 2px 6px;
   border-radius: 6px;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 
 .comment-reaction.active {
@@ -257,27 +519,8 @@
   font-weight: 500;
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 12px;
-}
 
-.page-btn {
-  background: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 4px 10px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.page-btn.active {
-  background: #1a3180;
-  color: #fff;
-}
-
+/* Animations */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
